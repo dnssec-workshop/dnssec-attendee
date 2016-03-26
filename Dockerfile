@@ -25,6 +25,8 @@ RUN     apt-get clean
 RUN     cd /root && git clone https://github.com/dnssec-workshop/dnssec-data && \
           rsync -v -rptgoD --copy-links /root/dnssec-data/dnssec-attendee/ /
 
+RUN     chgrp bind /etc/bind/zones && chmod g+w /etc/bind/zones
+
 # Start services using supervisor
 RUN     mkdir -p /var/log/supervisor
 
